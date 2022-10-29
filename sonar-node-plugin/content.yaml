@@ -1,0 +1,69 @@
+title: SonarQube
+author: kytay
+tags:
+  - Sonar
+  - SonarQube
+  - Analysis
+  - report
+logo: sonarqube.svg
+repo: https://github.com/kytay/drone-plugins/tree/master/sonar-node-plugin
+image: https://hub.docker.com/r/kytay/sonar-node-plugin
+license: MIT License
+readme: repo: https://github.com/kytay/drone-plugins/blob/master/sonar-node-plugin/README.md
+description: >-
+  This plugin can scan your code quality and post the analysis report to your
+  SonarQube server. SonarQube is an open source code quality management platform.
+example: |
+  kind: pipeline
+  name: default
+  steps:
+  - name: code-analysis
+  image: kytay/sonar-node-plugin
+  settings:
+      sonar_host:
+        from_secret: sonar_host
+      sonar_token:
+        from_secret: sonar_token
+properties:
+  sonar_host:
+    type: string
+    defaultValue: ''
+    description: Hostname of the sonar server.
+    secret: false
+    required: true
+  sonar_token:
+    type: string
+    defaultValue: ""
+    description: The authentication token with either Execute Analysis permission on the project or Global Execute Analysis permission.
+    secret: true
+    required: false
+  sonar_login:
+    type: string
+    defaultValue: ""
+    description: This is the login of a SonarQube user with either Execute Analysis permission on the project or Global Execute Analysis permission.
+    secret: true
+    required: false
+  sonar_password:
+    type: string
+    defaultValue: ""
+    description: This is the password that goes with your sonar_login username.
+    secret: true
+    required: false
+  sonar_loglevel:
+    type: string
+    defaultValue: "INFO"
+    description: Control the quantity / level of logs produced during an analysis.
+    secret: false
+    required: false
+  sonar_project_settings:
+    type: string
+    defaultValue: ""
+    description: Specify the path to the project configuration file
+    secret: false
+    required: false
+  sonar_debug:
+    type: boolean
+    defaultValue: "false"
+    description: Enable debug flag for additional information logging
+    secret: false
+    required: false
