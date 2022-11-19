@@ -1,10 +1,11 @@
-FROM node:lts-alpine
+FROM eclipse-temurin:11-jdk
 
 ENV SONAR_VERSION=4.7.0.2747
 ENV SONAR_SCANNER_CLI=sonar-scanner-cli-${SONAR_VERSION}
 ENV SONAR_SCANNER=sonar-scanner-${SONAR_VERSION}
 
-RUN apk add bash curl openjdk11-jre-headless
+RUN apt-get update && \
+apt-get install -y curl zip
 
 RUN curl https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/${SONAR_SCANNER_CLI}.zip -so /opt/${SONAR_SCANNER_CLI}.zip && \
 unzip -d /opt /opt/${SONAR_SCANNER_CLI}.zip && \
