@@ -19,13 +19,6 @@ example: |
   kind: pipeline
   name: default
   steps:
-  - name: generate sonar-project.properties
-    image: alpine
-    commands: 
-    - set -e
-    - echo "" > ./sonar-project.properties
-    - echo "sonar.projectKey=${DRONE_REPO}" >> ./sonar-project.properties
-    - echo "sonar.projectName=${DRONE_REPO}" >> ./sonar-project.properties
   - name: perform code-analysis
     image: kytay/sonar-node-plugin
     settings:
@@ -33,7 +26,7 @@ example: |
           from_secret: sonar_host
         sonar_token:
           from_secret: sonar_token
-        use_node_version: 14
+        use_node_version: 16.18.1
 properties:
   sonar_host:
     type: string
@@ -88,6 +81,6 @@ properties:
     defaultValue: ""
     description: >-
       Specify the node version to use for sonar-scanner, the most recent node LTS version will be selected if this variable is not specified.
-      Example Values: 14, 14.21.1, v14, v14.21.1
+      Example Values: 16, 16.18.1, v16, v16.18.1
     secret: false
     required: false
