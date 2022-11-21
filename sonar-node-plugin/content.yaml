@@ -1,18 +1,19 @@
-title: SonarQube
+title: SonarScanner
 author: kytay
 tags:
   - Sonar
   - SonarQube
+  - SonarScanner
   - Analysis
-  - report
+  - Report
   - NodeJS
-logo: sonarqube.svg
+logo: sonarqube-icon.svg
 repo: https://github.com/kytay/drone-plugins/tree/master/sonar-node-plugin
 image: https://hub.docker.com/r/kytay/sonar-node-plugin
 license: MIT License
-readme: repo: https://github.com/kytay/drone-plugins/blob/master/sonar-node-plugin/README.md
+readme: https://github.com/kytay/drone-plugins/blob/master/sonar-node-plugin/README.md
 description: >-
-  This plugin can enable static code scanning with different versions of NodeJS (via nvm) and 
+  This plugin enable code analysis with different versions of NodeJS (via nvm) and 
   post the analysis report to your SonarQube server. 
   SonarQube is an open source code quality management platform.
 example: |
